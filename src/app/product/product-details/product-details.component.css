@@ -1,0 +1,23 @@
+.card-margin{
+    margin: 20px;
+    display: flex;
+    flex-wrap:wrap;
+}
+.btn-wrap:after{
+    clear: both;
+    content: '';
+    display: table;
+    
+}
+.btn-wrap{
+    margin-right: 12px;
+    padding-top: 4px;
+}
+/* .card-margin:after{
+    content :'';
+    display: table;
+    clear : both;
+}
+.left-div{
+    float : left;
+} */

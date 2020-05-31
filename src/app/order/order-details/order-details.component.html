@@ -1,0 +1,67 @@
+<div class="example-container">
+    <mat-card class="card-margin">
+        <div class="btn-wrap">
+            <button type="button" class="right-align" mat-raised-button (click)="back()">Back</button>
+        </div>
+        <div>
+            <h2>Order Details</h2>
+            <div class="header-order">
+                <div class="left-align">
+                    <span>Order Number :{{order?.order_number}}</span><br/>
+                    <span>{{order?.createdAt | date}}</span><br/><br/>
+                </div>
+                <div class="right-align">
+                    <b>Status : </b><span>{{order?.status}}</span><br/>
+                    <b>WayBill No. : </b><span>{{order?.waybill}}</span>
+                </div>
+            </div>
+            <h3>Billing Info</h3>
+            <hr>
+            <div class="billing-info">
+                <div class="left-align">
+                    <b>Order Placed By : </b><br/>
+                    <span>{{order?.fromdata[0].user_name}}</span>
+                </div>
+                <div class="right-align">
+                    <b>Order Placed To</b><br/>
+                    <span>{{order?.todata[0].user_name}}</span>
+                </div>
+            </div>
+             <hr>
+             <div class= "product-details">
+            <b>Product Details : </b><br/><br/><br/>
+            <table mat-table [dataSource]="order?.product_details" class="mat-elevation-z8">
+                <ng-container matColumnDef="Name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element;let i=index">
+                        <img src="{{'http://pranaycarekleanup.in/products/' + element?.image[0]}}" width = "75px" style="vertical-align:middle" >
+                        <span style="padding-left :8px;">{{element.name}}</span>
+                 </td>
+                </ng-container>
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Price">
+                    <th mat-header-cell *matHeaderCellDef> Price </th>
+                    <td mat-cell *matCellDef="let element"> {{element.price | currency : 'INR'}} </td>
+                </ng-container>
+                
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Quantity">
+                    <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Subtotal">
+                    <th mat-header-cell *matHeaderCellDef> Subtotal </th>
+                    <td mat-cell *matCellDef="let element"> {{(element.quantity * element.price) | currency : 'INR'}} </td>
+                </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            </div>
+        </div>
+        <div class="total">
+         Total : {{total |currency : 'INR'}}
+        </div>
+    </mat-card>
+    
+ </div>

@@ -1,0 +1,48 @@
+<div class="example-container">
+    <mat-card class="card-margin">
+        <div class="btn-wrap">
+            <button type="button" class="right-align" mat-raised-button (click)="back()">Back</button>
+        </div>
+    <form [formGroup]="return_good" (submit)="return_submit()" >  
+    <h3>Create Return</h3>
+    <h4>Select Channel Partner</h4>
+    <mat-form-field appearance="fill" class="custom_field" >
+        <mat-label>Channel Partner</mat-label>
+        <mat-select formControlName = "to_id">
+            <mat-option *ngFor="let cp of channelPartner" [value]="cp._id">
+                {{cp.user_name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <h4>Return Date</h4>
+    <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="return_date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    <hr/>
+    <h4>Product Details</h4>
+    <div *ngFor = "let product of getData;let i=index" formArrayName="product_details">
+        <div [formGroupName]="i" class="productList">
+            <div class="prodls">
+                <div><img src="{{'http://pranaycarekleanup.in/products/' + getData[i].value.image[0]}}" width = "75px" ></div>
+                <div class="inner-sec1">{{getData[i].value.name}}</div>
+                <div class="inner-sec2">
+                    <mat-form-field appearance="fill" class="custom_field">
+                        <input matInput placeholder="Quantity"type="number" formControlName = "quantity" min="1"  [value] = "getData[i].value.quantity" >
+                     </mat-form-field>
+                </div>
+                <div>
+                <mat-icon class="icon" *ngIf="getData.length!=1" (click)="remove(i)">close</mat-icon></div>
+            </div>
+        </div>
+    </div>
+    
+    <hr>
+    
+    <button mat-flat-button color="primary">Submit</button>
+    
+</form>
+</mat-card>
+</div>

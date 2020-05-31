@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Add more products</h1>
+<div mat-dialog-content>
+  
+<div class="form-container">
+<form [formGroup]="productArray">  
+  
+<div *ngFor = "let product of inventoryDetails;let i=index" formArrayName="product_inventory" class="product_block">
+  <div [formGroupName]="i" class="productList">
+      <div class="prodls">
+          <div class="image_class"><img src="{{'http://pranaycarekleanup.in/products/' + product.image[0]}}" width = "75px" height="100px" ></div>
+          <div class="product_details">
+            <div class="inner-sec1">{{product.name}}</div>
+            <div class="inner-sec1">{{product.price|currency:"INR"}}</div>
+            <div class="inner-sec2">
+                <mat-form-field appearance="fill" class="custom_field" style="width:100px !important;" >
+                    <input matInput placeholder="Quantity" type="number" formControlName = "quantity" min = 1 [max]="product.quantity"  >
+                </mat-form-field>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+</form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="add_product()" color="primary">Add</button>
+</div>
+</div>

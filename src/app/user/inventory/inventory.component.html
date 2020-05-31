@@ -1,0 +1,39 @@
+<div class="example-container">
+    
+    <mat-card class="card-margin">
+        <div class="btn-wrap">
+            <h3 class="left-align" >Inventory List</h3>
+            <button type="button" class="right-align" mat-raised-button (click)="back()">Back</button>
+        </div>
+        <div>
+            <div class= "product-details">
+                <mat-toolbar color="error" *ngIf="inventoryDetails.length == 0">No records Found</mat-toolbar>
+                <table mat-table *ngIf="inventoryDetails.length" [dataSource]="inventoryDetails" class="mat-elevation-z8">
+                    <ng-container matColumnDef="Name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element;let i=index">
+                            <img src="{{'http://pranaycarekleanup.in/products/' + element?.image[0]}}" width = "75px" style="vertical-align:middle" >
+                            <span style="padding-left :8px;">{{element.name}}</span>
+                    </td>
+                    </ng-container>
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="Price">
+                        <th mat-header-cell *matHeaderCellDef> Price </th>
+                        <td mat-cell *matCellDef="let element"> {{element.price | currency : 'INR'}} </td>
+                    </ng-container>
+                    
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="Quantity">
+                        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                        <td mat-cell *matCellDef="let element"> {{element.quantity}} carton</td>
+                    </ng-container>
+                
+                    
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+    </mat-card>
+ </div>
+

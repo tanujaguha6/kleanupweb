@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+  }
+.header_bind:after{
+  display: table;
+  clear: both;
+  content: "";
+}
+button{
+  margin-bottom : 5px
+}
+.mat-cell{
+  /* border: 0px; */
+  padding: 27px;
+}

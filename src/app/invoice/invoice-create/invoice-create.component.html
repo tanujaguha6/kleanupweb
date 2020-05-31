@@ -1,0 +1,43 @@
+<div class="example-container">
+    <mat-card class="card-margin">
+        <div class="btn-wrap">
+            <button type="button" class="right-align" mat-raised-button (click)="back()">Back</button>
+        </div>
+    <form [formGroup]="invoice" (ngSubmit)="add_invoice()">  
+    <h3>Create Invoice</h3>
+    <span>{{order_details?.order_number}}</span><br/>
+    <span>{{order_details?.createdAt|date}}</span><br/>
+    <hr>
+    <h4>Waybill Number</h4>
+    <mat-form-field appearance="fill" class="custom_field">
+        <input matInput placeholder="Waybill number" type="number" formControlName = "waybill" >
+     </mat-form-field>
+     <hr>
+    <h4>Product Details</h4>
+    <button type="button" class="right-align" color="primary" mat-raised-button (click)="more_product()">More products</button>
+
+    <div *ngFor = "let product of getData;let i=index" formArrayName="product_details">
+        <div [formGroupName]="i" class="productList">
+            <div class="prodls">
+                <div><img src="{{'http://pranaycarekleanup.in/products/' + getData[i].value.image[0]}}" width = "75px" ></div>
+                <div class="inner-sec1">{{getData[i].value.name}}</div>
+                <div class="inner-sec2">
+                    <mat-form-field appearance="fill" class="custom_field">
+                        <input matInput placeholder="Quantity" type="number" formControlName = "quantity" min = 1 [value] = "getData[i].value.quantity" >
+                     </mat-form-field>
+                </div>
+                <div>
+                <mat-icon class="icon" *ngIf="getData.length!=1" (click)="remove(i)">close</mat-icon></div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h4>Shipping Details</h4>
+    <mat-form-field appearance="fill" class="custom_field">
+        <textarea matInput placeholder="Shipping Address" formControlName = "shipping_address"></textarea>
+     </mat-form-field><br/><br/>
+    <button mat-flat-button color="primary">Submit</button>
+    
+</form>
+</mat-card>
+</div>

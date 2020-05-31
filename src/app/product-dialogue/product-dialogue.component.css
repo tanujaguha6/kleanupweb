@@ -1,0 +1,15 @@
+form{
+    display: flex;
+    flex-wrap: wrap;
+}
+.product_block{
+    padding: 8px;
+    margin: 2px;
+    border: 1px solid black;
+    width: 29%;
+    height: 200px;
+    text-align: center;
+}
+.prodls{
+    height: 180px;
+}

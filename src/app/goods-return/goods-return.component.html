@@ -1,0 +1,36 @@
+<mat-card>
+    <div class="header_bind" *ngIf="user_role!='company'">
+      <button mat-raised-button color="primary" class="left-align" (click)="add_return()">Add Return</button>
+    </div>
+      
+      <mat-paginator [length]="100"
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+        <mat-toolbar color="error" *ngIf="data?.filteredData.length == 0">No records Found</mat-toolbar>
+    
+            <table mat-table *ngIf="data?.filteredData.length" [dataSource]="data" class="mat-elevation-z8">
+               
+                <ng-container matColumnDef="Return date">
+                  <th mat-header-cell *matHeaderCellDef> Return Reqiuest date </th>
+                  <td mat-cell *matCellDef="let element;let i=index"> {{element.return_date | date}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Name">
+                  <th mat-header-cell *matHeaderCellDef> Request Sent By  </th>
+                  <td mat-cell *matCellDef="let element"> {{element?.userdata[0]?.user_name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Sent To">
+                  <th mat-header-cell *matHeaderCellDef>  Request Sent To </th>
+                  <td mat-cell *matCellDef="let element">  {{element?.todata[0]?.user_name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.status }} 
+                       <mat-icon color="primary" *ngIf="element.status!='Accepted' && user_role=='company'" (click)="accept(element._id)">done</mat-icon> 
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+         
+</mat-card>

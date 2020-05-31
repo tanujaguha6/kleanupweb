@@ -1,0 +1,36 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .mat-flat-button{
+      width  :20% !important;
+      /* margin-left: 40%; */
+       margin-top: 4%;
+  }
+  table{
+    width:100%;
+  }
+  .mat-radio-group{
+    display: flex;
+    margin-top: 23px;
+  }
+  label{
+    width: 25%;
+    display: block;
+    font-weight: bold;
+  }
+  .mat-form-field{
+    width : 406px!important;
+  }
+  .main_content,.image-section{
+    display: flex;
+    flex-wrap:wrap;
+  }
+  .img{
+    /* padding: 80px; */
+    margin-left: 20px;
+    max-width: 37%;
+    /* border: dashed; */
+  }

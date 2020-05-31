@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #c5cae9; }
+.right-align{
+    float: right;
+}
+.left-align{
+    float: left;
+}
+.mat-icon{
+    vertical-align: middle;
+    cursor: pointer;
+}
+.mat-header-cell{
+    text-align:center!important;
+}
+.cdk-overlay-pane{
+    width: 50%!important;
+    /* height: 50%!important; */
+}
+.mat-header-cell:first-child{
+    text-align:left!important;
+}
+.mat-cell{
+    text-align: center!important;
+}
+.mat-cell:first-child{
+    text-align:left!important;
+}
+.error_msg{
+    color:red;
+}

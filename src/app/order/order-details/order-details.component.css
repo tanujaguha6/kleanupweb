@@ -1,0 +1,31 @@
+table{
+    width: 100%;
+}
+.left-align{
+    float: left;
+}
+.right-align{
+    float: right;
+}
+.billing-info:after{
+    display: table;
+    clear: both;
+    content:"";
+}
+.header-order:after{
+    display: table;
+    clear: both;
+    content:"";
+}
+/* .mat-header-cell{
+    display: none;
+} */
+.mat-cell{
+    /* border: 0px; */
+    padding: 27px;
+}
+.total{
+    margin-top: 20px;
+    text-align: right;
+    padding-right: 150px;
+}

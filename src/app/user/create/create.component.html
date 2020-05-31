@@ -1,0 +1,112 @@
+<div class="example-container">
+    <div class="btn-wrap">
+        <h3 class="left-align" >{{type}} User</h3>
+        <button type="button" class="right-align" mat-raised-button (click)="back()">Back</button>
+    </div>
+    <mat-card class="card-margin">
+    <form [formGroup] = "user" (ngSubmit) = "create_user()">
+        <div class="main_content" > 
+            <div formGroupName = "user_details">
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName = "user_name">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Firm Name</mat-label>
+                    <input matInput formControlName = "firm_name">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Proprietor Name</mat-label>
+                    <input matInput formControlName = "proprietor">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName = "user_email">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Login Username</mat-label>
+                    <input matInput formControlName = "user_login_id">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName = "user_password" type="password"  maxlength="8" pattern="^[ A-Za-z_@./#&+-]*$">
+                    
+                </mat-form-field>
+                <div style="margin-top: -16px;">(Password should be alphanumeric and special charectors only)</div>
+                <br/>
+                <mat-form-field appearance="fill">
+                    <mat-label>Mobile</mat-label>
+                    <input matInput formControlName ="mobile" maxlength="10">
+                </mat-form-field><br/>
+                <mat-radio-group formControlName="status">
+                    <label>Status </label>
+                    <mat-radio-button value="true">Enabled</mat-radio-button>&nbsp;
+                    <mat-radio-button value="false">Disabled</mat-radio-button>
+                </mat-radio-group><br/>
+                <mat-form-field appearance="fill" *ngIf="(userdata?.user_role!='company' && user_role=='company') || user_role=='company'">
+                    <mat-label>User Role</mat-label>
+                    <mat-select formControlName = "user_role">
+                        <mat-option value="super_stockist">Super Stockist</mat-option>
+                        <mat-option value="distributor">Distributor</mat-option>
+                        <mat-option value="retailer">Retailer</mat-option>
+                    </mat-select>
+                </mat-form-field><br/>
+                <mat-form-field appearance="fill" *ngIf="(getData.user_role.value == 'distributor' && user_role=='company')">
+                    <mat-label>Super Stockist</mat-label>
+                    <mat-select formControlName = "parent_id">
+                        <mat-option *ngFor = "let ss of ss_list" value={{ss._id}}>{{ss.user_name}}</mat-option>
+                    </mat-select>
+                </mat-form-field><br/>
+            </div>
+            <div class="img">
+                <div formGroupName = "details" >
+                    <mat-form-field appearance="fill">
+                        <mat-label>Address</mat-label>
+                        <input matInput formControlName = "address">
+                    </mat-form-field><br/>
+                    <mat-form-field appearance="fill">
+                        <mat-label>City</mat-label>
+                        <input matInput formControlName = "city">
+                    </mat-form-field><br/>
+                    <mat-form-field appearance="fill">
+                        <mat-label>State</mat-label>
+                        <input matInput formControlName = "state">
+                    </mat-form-field><br/>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Pincode</mat-label>
+                        <input matInput formControlName = "pincode">
+                    </mat-form-field><br/>
+                    <mat-form-field appearance="fill">
+                        <mat-label>GST</mat-label>
+                        <input matInput formControlName = "gst">
+                    </mat-form-field><br/>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Station</mat-label>
+                        <input matInput formControlName = "station">
+                    </mat-form-field><br/>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Bank Account</mat-label>
+                        <input matInput formControlName = "bank_account">
+                    </mat-form-field><br/>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Bank Name</mat-label>
+                        <input matInput formControlName = "bank_name">
+                    </mat-form-field><br/>
+                    <mat-form-field appearance="fill">
+                        <mat-label>IFSC Code</mat-label>
+                        <input matInput formControlName = "ifsc_code">
+                    </mat-form-field><br/>
+                    
+                </div>
+            </div>
+        </div>
+        <br/><br/><br/>
+        <button mat-raised-button color="primary" type="submit()">Save</button>
+    </form>
+</mat-card>
+</div>

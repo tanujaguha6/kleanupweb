@@ -1,0 +1,67 @@
+
+<div class="example-container">
+    <div class="btn-wrap">
+        <h3 class="left-align" >Add Banner</h3>
+        
+        <button type="button" class="right-align" mat-raised-button (click)="back()">Back</button>
+    </div>
+    <mat-card class="card-margin">
+    <form [formGroup] = "banner" (ngSubmit) = "add_banner()">
+        <div class="main_content">
+            <div>
+            <mat-radio-group formControlName="banner_type">
+                <label>Banner type ? </label>
+                <mat-radio-button value="product">Product</mat-radio-button>
+                <mat-radio-button value="category">Category</mat-radio-button>
+            </mat-radio-group><br/>
+            <span class="error_msg" *ngIf="submit && banner.get('banner_type').invalid && banner.get('banner_type').errors.required">
+                Banner type is required.
+            </span>
+            <mat-form-field appearance="fill" *ngIf="banner.get('banner_type').value=='product'">
+                <mat-label>Product</mat-label>
+                <mat-select formControlName = "id">
+                    <mat-option *ngFor = "let product of products" value="{{product._id+','+product.name}}">{{product.name}}</mat-option>
+                </mat-select>
+            </mat-form-field><br/>
+            <span class="error_msg" *ngIf="submit && banner.get('banner_type').value=='product' && banner.get('id').invalid && banner.get('id').errors.required">
+                Product selection is required.
+            </span>
+            <mat-form-field appearance="fill" *ngIf="banner.get('banner_type').value=='category'">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName = "id">
+                    <mat-option *ngFor = "let cat of category" value="{{cat._id+','+cat.name}}">{{cat.name}}</mat-option>
+                </mat-select>
+            </mat-form-field><br/>
+            <span class="error_msg" *ngIf="submit && banner.get('banner_type').value=='category' && banner.get('id').invalid && banner.get('id').errors.required">
+                Category selection is required
+            </span>
+            </div>
+            <div class="img">
+                
+                <div *ngIf="imgURL" class="image-section">
+                    <img [src]="imgURL" width = "200px" height = "200px" >
+                </div>
+                <br/><br/>
+                <button type="button" mat-raised-button (click)="file.click()">Choose File</button>
+                <input
+                    type="file"
+                    #file
+                    style="display: none"
+                    accept="image/x-png,image/gif,image/jpeg"
+                    (change)="onFilesAdded($event)"
+                />
+                <div class="error_msg" *ngIf="submit && banner.get('image').invalid && banner.get('image').errors.required">
+                    Banner image is required.
+                </div>
+                <div class="error_msg" *ngIf="imgError">
+                   ({{imgError}})
+                </div>   
+            </div><br/>
+            
+        </div>
+        
+        <br/><br/><br/>
+        <button mat-flat-button color="primary">Add</button>
+    </form>
+</mat-card>
+</div>

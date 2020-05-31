@@ -1,0 +1,41 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    margin:15px;
+  }
+  
+  
+  .mat-flat-button{
+    width : 20% !important;
+  }
+  .custom_field{
+    width : 406px!important;
+  }
+  
+  .prodls{
+    list-style-type: none;
+  }
+  .prodls {
+    width:100%;
+    text-align:center;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    
+}
+.inner-sec1{
+    width: 30%;
+    text-align: left;
+    padding-left: 8px;
+}
+.inner-sec2{
+  width: 40%;
+  text-align: left;
+  padding-left: 8px;
+}
+.icon{
+    /* width: 20%; */
+    margin-bottom: 61px;
+    margin-left:7px;
+    color: red;
+}
