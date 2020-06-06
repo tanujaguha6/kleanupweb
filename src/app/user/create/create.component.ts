@@ -94,6 +94,21 @@ export class CreateComponent implements OnInit {
   get getData(){
     return (this.user.controls.user_details['controls']);
   }
+  getErrorMessage(val,type,count=null) {
+    
+    if (val.hasError(type)) {
+      if(type == "email")
+        return "Not a valid email";
+      if(type == "minlength")
+        return "Minimum length should be "+count;
+      if(type == "maxlength")
+        return "Maximum length should be "+count;
+      if(type == "pattern")
+        return "Invalid pattern";
+      else
+        return '';
+    }
+  }
   create_user(){
     
     

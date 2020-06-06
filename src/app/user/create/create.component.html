@@ -24,7 +24,8 @@
                 <br>
                 <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
-                    <input matInput formControlName = "user_email">
+                    <input matInput formControlName = "user_email" #user_email>
+                    <mat-error *ngIf="getData.user_email.invalid">{{getErrorMessage(getData.user_email,'email')}}</mat-error>
                 </mat-form-field>
                 <br>
                 <mat-form-field appearance="fill">
@@ -35,13 +36,18 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Password</mat-label>
                     <input matInput formControlName = "user_password" type="password"  maxlength="8" pattern="^[ A-Za-z_@./#&+-]*$">
-                    
+                    <mat-hint>(Password should be alphanumeric and special charectors only)</mat-hint>
+                    <mat-error *ngIf="getData.user_password.invalid">{{getErrorMessage(getData.user_password,'minlength',4)}}</mat-error>
+                    <mat-error *ngIf="getData.user_password.invalid">{{getErrorMessage(getData.user_password,'maxlength',8)}}</mat-error>
+                    <mat-error *ngIf="getData.user_password.invalid">{{getErrorMessage(getData.user_password,'pattern')}}</mat-error>
                 </mat-form-field>
-                <div style="margin-top: -16px;">(Password should be alphanumeric and special charectors only)</div>
                 <br/>
                 <mat-form-field appearance="fill">
                     <mat-label>Mobile</mat-label>
                     <input matInput formControlName ="mobile" maxlength="10">
+                    <mat-error *ngIf="getData.mobile.invalid">{{getErrorMessage(getData.mobile,'minlength',10)}}</mat-error>
+                    <mat-error *ngIf="getData.mobile.invalid">{{getErrorMessage(getData.mobile,'maxlength',10)}}</mat-error>
+ 
                 </mat-form-field><br/>
                 <mat-radio-group formControlName="status">
                     <label>Status </label>

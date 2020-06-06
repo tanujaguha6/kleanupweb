@@ -12,7 +12,8 @@ export class LoginService {
   loginFun(loginData):any{
     this.loginDataServ = {
       user_id : loginData.username,
-      password : loginData.password
+      password : loginData.password,
+      type:loginData.type
     };
     
     return this.http.post(config.apiEndpoint + 'login',this.loginDataServ)
@@ -34,6 +35,7 @@ export class LoginService {
     localStorage.setItem('id_token', authResult.token);
     localStorage.setItem('user_role', authResult.user.user_role);
     localStorage.setItem('user_id', authResult.user._id);
+    localStorage.setItem('username', authResult.user.user_name);
 
   } 
   isLoggedIn(){

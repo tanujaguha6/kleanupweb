@@ -1,9 +1,73 @@
-table {
-    width: 100%;
-  }
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+table{
+  width: 100%;
+}
+
+.mobile-label {
+  display: none;
+}
+.w-75{
+  width: 5px;
+}
 button{
     margin-bottom : 5px;
 }
 .filter{
   float: right;
+}
+.mat-cell{
+  overflow: visible!important;
+  align-items: start;
+  flex-wrap: wrap;
+  word-break: break-all;
+  text-align: left;
+}
+
+.w-75{
+  width: 10px!important;
+}
+.titles{
+  display: none;
+}
+@media(max-width: 600px) {
+  td:first-child{
+    display: none;
+  }
+  td{
+    display: block;
+    width: 247px;
+    padding: 4px 0px 8px 22px!important;
+    border: none;
+    text-align: left!important;
+  }
+  .titles{
+    display: inline;
+    font-weight: bold;
+  }
+  tr{
+    display: inline-table;
+    border-bottom: 1px solid black;
+  }
+  .mat-header-row {
+    display: none;
+  }
+  .mat-cell:first-child{
+    padding-left: 0px!important;
+    text-align: center!important;
+}
+.mat-cell{
+  border: none;
+}
+  .mat-row { 
+    margin-bottom: 4px;
+    background-color: #dee1f5;
+  }
+  .action{
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
 }

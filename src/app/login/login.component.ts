@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder , private loginService : LoginService, private router : Router, private toastr: ToastrService) { }
   loginDetails = this.fb.group({
     username : ['',[Validators.required]],
-    password : ['',[Validators.required]]
+    password : ['',[Validators.required]],
+    type : ['web']
   });
   ngOnInit() {
     

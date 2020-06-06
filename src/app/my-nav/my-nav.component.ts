@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class MyNavComponent {
   isLoggedIn = localStorage.getItem('id_token');
+  username = localStorage.getItem('username');
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

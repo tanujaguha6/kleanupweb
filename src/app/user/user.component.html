@@ -20,41 +20,51 @@
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element;let i=index"> {{i+1}} </td>
+      <td mat-cell *matCellDef="let element;let i=index"> 
+        <span class="titles">No. :</span>{{i+1}} </td>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.user_name}} </td>
+      <td mat-cell *matCellDef="let element"> 
+        <span class="titles">Name :</span>
+        {{element.user_name}} </td>
     </ng-container>
   
     <!-- Weight Column -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef> Email </th>
-      <td mat-cell *matCellDef="let element"> {{element.user_email}} </td>
+      <td mat-cell *matCellDef="let element"> 
+        <span class="titles">Email :</span>
+        {{element.user_email}} </td>
     </ng-container>
   
     <!-- Symbol Column -->
     <ng-container matColumnDef="username">
       <th mat-header-cell *matHeaderCellDef> Login username </th>
-      <td mat-cell *matCellDef="let element"> {{element.user_login_id}} </td>
+      <td mat-cell *matCellDef="let element">
+        <span class="titles">Login Username :</span>
+         {{element.user_login_id}} </td>
     </ng-container>
 
     <ng-container matColumnDef="role">
         <th mat-header-cell *matHeaderCellDef> User Role </th>
-        <td mat-cell *matCellDef="let element"> {{element.user_role}} </td>
+        <td mat-cell *matCellDef="let element"> 
+          <span class="titles">User Role :</span>
+          {{element.user_role}} </td>
     </ng-container>
     <ng-container matColumnDef="Status">
         <th mat-header-cell *matHeaderCellDef> Status </th>
-        <td mat-cell *matCellDef="let element"> 
+        <td mat-cell *matCellDef="let element">
+          <span class="titles">Status :</span> 
           <mat-icon *ngIf="element.status" style="color:green">check_circle</mat-icon>
           <mat-icon *ngIf="!element.status" color="warn">cancel</mat-icon>
         </td>
     </ng-container>
       <ng-container matColumnDef="Action">
         <th mat-header-cell *matHeaderCellDef> Action </th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let element" class="action">
           <button mat-raised-button color="secondary" (click)="details(element._id)">Details</button>&nbsp;&nbsp;
           <button mat-raised-button color="primary" *ngIf="element.user_role!='company'" (click)="inventory(element._id)">Inventory</button>
 
